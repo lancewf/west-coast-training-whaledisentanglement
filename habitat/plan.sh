@@ -1,4 +1,4 @@
-pkg_name=west-coast-training-whaledisentanglement
+pkg_name=west_coast_training_whaledisentanglement
 pkg_origin=lancewf
 pkg_version="0.1.0"
 pkg_maintainer="Lance Finfrock <lancewf@gmail.com>"
