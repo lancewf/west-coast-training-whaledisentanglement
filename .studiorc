@@ -3,10 +3,8 @@ source "$(hab pkg path chef/studio-common)/bin/studio-common"
 
 install_if_missing core/curl curl
 
-eval "$(curl -s -L https://gist.githubusercontent.com/lancewf/3117853c8c5a04c7b01bac737887a30c/raw/375644621d44f2d638a4e3ab9cc2cbfb1b3d41d5/hab_helpers.sh)"
 source <(curl -s https://gist.githubusercontent.com/lancewf/3117853c8c5a04c7b01bac737887a30c/raw/375644621d44f2d638a4e3ab9cc2cbfb1b3d41d5/hab_helpers.sh)
 
-eval "$(curl -s -L https://gist.githubusercontent.com/lancewf/584ca17c7b50cfc859e7cf544c1a67e8/raw/3dde41d74e5c562fce89235242150751395a95ea/hab_service_helper.sh)"
 source <(curl -s https://gist.githubusercontent.com/lancewf/584ca17c7b50cfc859e7cf544c1a67e8/raw/3dde41d74e5c562fce89235242150751395a95ea/hab_service_helper.sh)
 
 export PORT=8080
@@ -14,5 +12,7 @@ export SERVICE_NAME="west_coast_training_whaledisentanglement"
 
 function create_config() {
   mkdir -p /hab/user/$SERVICE_NAME/config/
-  printf "[http.listen]\n host = \"0.0.0.0\"\n port = \"$PORT\"\n local_only=true\n\n" > /hab/user/$SERVICE_NAME/config/user.toml
+  printf "[http.listen]\n host = \"0.0.0.0\"\n port = \"$PORT\"\n local_only=false\n\n" > /hab/user/$SERVICE_NAME/config/user.toml
 }
+
+alias reload="build_load"
